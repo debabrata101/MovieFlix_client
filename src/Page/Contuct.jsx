@@ -19,7 +19,7 @@ const Contuct = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-6 ">
-      <div className="w-full max-w-6xl flex flex-col lg:flex-row bg-blue-300 shadow-lg rounded-lg p-8">
+      <div className="w-full max-w-6xl flex flex-col lg:flex-row bg-white shadow-2xl shadow-black rounded-lg p-8">
         <div className="lg:w-1/2 lg:pr-8">
           <h2 className="text-3xl font-bold text-center lg:text-left mb-6">
             Contact Us

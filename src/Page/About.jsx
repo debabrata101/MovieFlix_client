@@ -13,18 +13,18 @@ const About = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600 p-6">
-      <div className="max-w-4xl w-full bg-white shadow-lg rounded-lg p-8">
+    <div className="min-h-screen flex flex-col items-center justify-center p-6">
+      <div className="w-full max-w-6xl">
         <h2 className="text-3xl font-bold text-gray-900 text-center mb-6">
           About MovieFlix
         </h2>
-        <p className="text-gray-700 text-center mb-6">
+        <p className="text-gray-700 text-center font-semibold mb-6">
           Welcome to MovieFlix, your ultimate destination for streaming the
           latest and greatest movies and TV shows. Our mission is to provide an
           unparalleled viewing experience with an extensive library of content
           that caters to all tastes.
         </p>
-        <div className="mb-6">
+        <div className="mb-6 shadow-2xl shadow-neutral-800">
           <Slider {...settings}>
             <div>
               <img
@@ -56,7 +56,7 @@ const About = () => {
             </div>
           </Slider>
         </div>
-        <p className="text-gray-700 text-center">
+        <p className="text-gray-700 font-semibold text-center p-8">
           At MovieFlix, we believe in the power of storytelling and strive to
           bring you closer to the stories that matter. Join us today and explore
           a world of endless entertainment.
