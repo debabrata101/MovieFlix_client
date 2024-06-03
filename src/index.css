@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.sidebar {
+    background-image: url('https://img.freepik.com/free-photo/movie-background-collage_23-2149876006.jpg?t=st=1717445043~exp=1717448643~hmac=39b5323e767c3ec4213fecef3b4f3070411285ac6e5621261253708ff30dc11d&w=360');
+    background-size: cover;
+    background-position: center;
+   
+  }

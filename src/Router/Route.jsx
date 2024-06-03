@@ -8,6 +8,12 @@ import About from "../Page/About";
 import Contuct from "../Page/Contuct";
 import Movies from "../Page/Movies";
 import Series from "../Page/Series";
+import DashboardLayout from "../Layout/DashboardLayout";
+import DashboardHome from "../Page/Dashboard/DashboardHome";
+import AddMovie from "../Page/Dashboard/AddMovie";
+import EditMovies from "../Page/Dashboard/EditMovies";
+import EditSeries from "../Page/Dashboard/EditSeries";
+import AddSeries from "../Page/Dashboard/AddSeries";
 
 
 export const router = createBrowserRouter([
@@ -46,5 +52,32 @@ export const router = createBrowserRouter([
     {
       path:"/registration",
       element:<Registration/>
+    },
+    {
+      path:"dashboard",
+      element:<DashboardLayout/>,
+      errorElement:<ErrorPage/>,
+      children:[
+        {
+          index:true,
+          element:<DashboardHome/>
+        },
+        {
+          path:"add-movies",
+          element:<AddMovie/>
+        },
+        {
+          path:"edit-movies",
+          element:<EditMovies/>
+        },
+        {
+          path:"add-series",
+          element:<AddSeries/>
+        },
+        {
+          path:"edit-series",
+          element:<EditSeries/>
+        },
+      ]
     }
   ]);
