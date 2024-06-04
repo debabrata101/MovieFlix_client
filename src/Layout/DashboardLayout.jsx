@@ -1,7 +1,13 @@
 import { Link, Outlet } from "react-router-dom";
 import { FaUser, FaFilm, FaTv, FaEdit, FaSignOutAlt } from "react-icons/fa";
+import { useSignOut } from "react-firebase-hooks/auth";
+import { auth } from "../Firebase/firebase.config";
 
 const DashboardLayout = () => {
+  const[signOut] = useSignOut(auth);
+  const handleLogout = async () => {
+    await signOut();
+  };
   return (
     <div className="flex h-screen">
       <div className="sidebar shadow-xl shadow-black text-white w-64 flex-shrink-0">
@@ -42,7 +48,7 @@ const DashboardLayout = () => {
                 </Link>
               </li>
               <li>
-                <Link to="logout" className="block flex items-center hover:text-purple-500">
+                <Link  onClick={handleLogout} className="block flex items-center hover:text-purple-500">
                   <FaSignOutAlt className="mr-2" />
                   Logout
                 </Link>

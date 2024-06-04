@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { Link, useLoaderData } from "react-router-dom";
 
-const MovieDetails = () => {
+const SeriesDetails = () => {
   const token = localStorage.getItem("token");
   const movie = useLoaderData();
   const {
@@ -20,7 +20,7 @@ const MovieDetails = () => {
   } = movie;
   const handleDelete = async () => {
     await axios
-      .delete(`http://localhost:5000/movies/${_id}`, {
+      .delete(`http://localhost:5000/series/${_id}`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -72,7 +72,7 @@ const MovieDetails = () => {
       </div>
       <div className="flex justify-end space-x-2">
         <Link
-          to={`/edit-movies/${_id}`}
+          to={`edit/:${_id}`}
           className="btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
         >
           <FaEdit className="mr-1" /> Edit
@@ -88,4 +88,4 @@ const MovieDetails = () => {
   );
 };
 
-export default MovieDetails;
+export default SeriesDetails;

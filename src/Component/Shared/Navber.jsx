@@ -48,7 +48,7 @@ function Navber() {
                   to="/movies"
                   className="text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
-                   Movies
+                  Movies
                 </Link>
                 <Link
                   to="/series"
@@ -56,6 +56,14 @@ function Navber() {
                 >
                   Series
                 </Link>
+                {user && (
+                  <Link
+                    to="/dashboard"
+                    className="text-white block px-3 py-2 rounded-md text-base font-medium"
+                  >
+                    Dashboard
+                  </Link>
+                )}
                 {!user && (
                   <>
                     <Link
@@ -65,7 +73,7 @@ function Navber() {
                       Login
                     </Link>
                     <Link
-                      to="/register"
+                      to="/registration"
                       className="text-white px-3 py-2 rounded-md text-sm font-medium"
                     >
                       Register
@@ -86,7 +94,7 @@ function Navber() {
                   />
                 </Link>
                 <button className="ml-3 bg-red-500 text-white px-3 py-2 rounded-md text-sm font-medium">
-                  <Link to="/logout">Logout</Link>
+                  <button onClick={handleLogout}>Logout</button>
                 </button>
               </div>
             ) : (
@@ -141,6 +149,14 @@ function Navber() {
           >
             Series
           </Link>
+          {user && (
+            <Link
+              to="/dashboard"
+              className="text-white block px-3 py-2 rounded-md text-base font-medium"
+            >
+              Dashboard
+            </Link>
+          )}
           {!user && (
             <>
               <Link
@@ -165,13 +181,12 @@ function Navber() {
               >
                 Profile
               </Link>
-              <Link
-                to="/logout"
+              <button
                 onClick={handleLogout}
                 className="text-white block px-3 py-2 rounded-md text-base font-medium"
               >
                 Logout
-              </Link>
+              </button>
             </>
           )}
         </div>
