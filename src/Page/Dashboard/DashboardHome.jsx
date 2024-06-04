@@ -3,6 +3,7 @@ import { auth } from "../../Firebase/firebase.config";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
+
 const DashboardHome = () => {
   const [user] = useAuthState(auth);
   const [userInfo, setUserInfo] = useState();
@@ -47,7 +48,8 @@ const DashboardHome = () => {
       </div>
 
       <div className="w-1/2">
-        <div className="text-center p-4"></div>
+        <div className="text-center p-4">
+        </div>
       </div>
     </div>
   );

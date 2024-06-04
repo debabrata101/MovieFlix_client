@@ -68,7 +68,7 @@ export const router = createBrowserRouter([
   {
     path: "edit-series/:id",
     element: <PrivateRoute><EditSeries/></PrivateRoute>,
-    loader: ({ params }) => fetch(`http://localhost:5000/movies/${params.id}`),
+    loader: ({ params }) => fetch(`http://localhost:5000/series/${params.id}`),
   },
   {
     path: "/login",

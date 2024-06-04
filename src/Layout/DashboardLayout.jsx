@@ -1,5 +1,5 @@
 import { Link, Outlet } from "react-router-dom";
-import { FaUser, FaFilm, FaTv, FaEdit, FaSignOutAlt } from "react-icons/fa";
+import { FaUser, FaFilm, FaTv,  FaSignOutAlt, FaHome } from "react-icons/fa";
 import { useSignOut } from "react-firebase-hooks/auth";
 import { auth } from "../Firebase/firebase.config";
 
@@ -36,21 +36,15 @@ const DashboardLayout = () => {
                 </Link>
               </li>
               <li>
-                <Link to="edit-movies" className="block flex items-center hover:text-purple-500">
-                  <FaEdit className="mr-2" />
-                  Edit Movies
-                </Link>
-              </li>
-              <li>
-                <Link to="edit-series" className="block flex items-center hover:text-purple-500">
-                  <FaEdit className="mr-2" />
-                  Edit Series
-                </Link>
-              </li>
-              <li>
                 <Link  onClick={handleLogout} className="block flex items-center hover:text-purple-500">
                   <FaSignOutAlt className="mr-2" />
                   Logout
+                </Link>
+              </li>
+              <li>
+                <Link  to="/" className="block flex items-center hover:text-purple-500">
+                  <FaHome className="mr-2" />
+                  Home
                 </Link>
               </li>
             </ul>

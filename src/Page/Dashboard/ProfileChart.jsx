@@ -1,7 +1,4 @@
 import { Bar } from "react-chartjs-2";
-import { Chart as ChartJS,  Legend, Tooltip } from "chart.js";
-
- ChartJS.register(Tooltip, Legend);
 
 const ProfileChart = () => {
   const data = {
@@ -9,11 +6,11 @@ const ProfileChart = () => {
     datasets: [
       {
         label: "Count",
-        data: [20, 30, 50], 
+        data: [20, 30, 50],
         backgroundColor: [
-          'rgba(255, 99, 132, 0.6)', 
-          'rgba(54, 162, 235, 0.6)', 
-          'rgba(255, 206, 86, 0.6)', 
+          'rgba(255, 99, 132, 0.6)',
+          'rgba(54, 162, 235, 0.6)',
+          'rgba(255, 206, 86, 0.6)',
         ],
         borderColor: [
           'rgba(255, 99, 132, 1)',
@@ -25,7 +22,7 @@ const ProfileChart = () => {
     ]
   };
 
-  const options = {
+  const chartOptions = {
     scales: {
       x: {
         stacked: true,
@@ -44,7 +41,7 @@ const ProfileChart = () => {
 
   return (
     <div className="text-center">
-      <Bar data={data} options={options} />
+      <Bar data={data} options={chartOptions} />
     </div>
   );
 };
