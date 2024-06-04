@@ -12,37 +12,37 @@ const DashboardLayout = () => {
           <nav>
             <ul className="space-y-2">
               <li>
-                <Link to="/dashboard" className="block flex items-center hover:text-gray-300">
+                <Link to="/dashboard" className="block flex items-center hover:text-purple-500">
                   <FaUser className="mr-2" />
                   Profile
                 </Link>
               </li>
               <li>
-                <Link to="add-movies" className="block flex items-center hover:text-gray-300">
+                <Link to="add-movies" className="block flex items-center hover:text-purple-500">
                   <FaFilm className="mr-2" />
                   Add Movies
                 </Link>
               </li>
               <li>
-                <Link to="add-series" className="block flex items-center hover:text-gray-300">
+                <Link to="add-series" className="block flex items-center hover:text-purple-500">
                   <FaTv className="mr-2" />
                   Add Series
                 </Link>
               </li>
               <li>
-                <Link to="edit-movies" className="block flex items-center hover:text-gray-300">
+                <Link to="edit-movies" className="block flex items-center hover:text-purple-500">
                   <FaEdit className="mr-2" />
                   Edit Movies
                 </Link>
               </li>
               <li>
-                <Link to="edit-series" className="block flex items-center hover:text-gray-300">
+                <Link to="edit-series" className="block flex items-center hover:text-purple-500">
                   <FaEdit className="mr-2" />
                   Edit Series
                 </Link>
               </li>
               <li>
-                <Link to="logout" className="block flex items-center hover:text-gray-300">
+                <Link to="logout" className="block flex items-center hover:text-purple-500">
                   <FaSignOutAlt className="mr-2" />
                   Logout
                 </Link>

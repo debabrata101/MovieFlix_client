@@ -1,4 +1,6 @@
+/* eslint-disable no-undef */
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const AddMovie = () => {
   const [title, setTitle] = useState("");
@@ -23,7 +25,8 @@ const AddMovie = () => {
     setScreenshots(newScreenshots);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async(event) => {
+    const token = localStorage.getItem('token');
     event.preventDefault();
     const movieData = {
       title,
@@ -35,6 +38,19 @@ const AddMovie = () => {
       screenshots,
       details,
     };
+    await fetch("http://localhost:5000/movies", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization : `Bearer ${token}`
+      },
+      body:JSON.stringify(movieData),
+    })
+      .then((res) => res.json())
+      .then(() => {
+        toast.success('Product added success !')
+      
+      });
   };
 
   return (

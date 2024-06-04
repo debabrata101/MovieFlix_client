@@ -1,4 +1,6 @@
+/* eslint-disable no-undef */
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const AddSeries = () => {
   const [title, setTitle] = useState("");
@@ -23,9 +25,10 @@ const AddSeries = () => {
     setScreenshots(newScreenshots);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
+    const token = localStorage.getItem("token");
     event.preventDefault();
-    const movieData = {
+    const seriesData = {
       title,
       star,
       writer,
@@ -35,14 +38,24 @@ const AddSeries = () => {
       screenshots,
       details,
     };
+    await fetch("http://localhost:5000/series", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(seriesData),
+    })
+      .then((res) => res.json())
+      .then(() => {
+        toast.success("Series added success !");
+      });
+    from.reset();
   };
 
   return (
     <div className="max-w bg-fuchsia-200 p-6 rounded-lg shadow-xl shadow-black  ">
-      <form
-        onSubmit={handleSubmit}
-        className="space-y-4"
-      >
+      <form onSubmit={handleSubmit} className="space-y-4">
         <h1 className="text-3xl text-center font-bold mb-4">Add Series</h1>
         <div className="border-b-2 border-fuchsia-700 mb-4"></div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

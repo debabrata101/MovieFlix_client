@@ -3,31 +3,47 @@ import GoogleLogin from "../Component/Authentication/GoogleLogin";
 import { useAuthState, useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useEffect, useState } from "react";
 import { auth } from "../Firebase/firebase.config";
+import axios from "axios";
 
 const Registration = () => {
   const navigate = useNavigate();
-  const [user, loading] = useAuthState(auth);
-  const [createUserWithEmailAndPassword] =
-    useCreateUserWithEmailAndPassword(auth);
+const [user, loading] = useAuthState(auth);
+const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(auth);
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+const [email, setEmail] = useState("");
+const [password, setPassword] = useState("");
+const [confirmPassword, setConfirmPassword] = useState("");
+const [name, setName] = useState(""); 
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (password !== confirmPassword) {
-      alert("Passwords do not match!");
-      return;
-    }
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (password !== confirmPassword) {
+    alert("Passwords do not match!");
+    return;
+  }
+
+  try {
+    
     await createUserWithEmailAndPassword(email, password);
-  };
 
-  useEffect(() => {
-    if (user) {
-      navigate("/", { replace: true });
-    }
-  }, [user, navigate, loading]);
+
+    await axios.post('http://localhost:5000/user', {
+      email: email,
+      name: name, 
+    });
+
+    
+    navigate("/", { replace: true });
+  } catch (error) {
+    console.error("Error creating user:", error);
+  }
+};
+
+useEffect(() => {
+  if (user) {
+    navigate("/", { replace: true });
+  }
+}, [user, navigate, loading]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600 p-6">
@@ -37,6 +53,24 @@ const Registration = () => {
             Register for MovieFlix
           </h2>
           <form onSubmit={handleSubmit} className="space-y-6">
+            <div>
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-gray-700"
+              >
+               Name
+              </label>
+              <input
+                id="name"
+                name="name"
+                type="name"
+                autoComplete="name"
+                required
+                value={email}
+                onChange={(e) => setName(e.target.value)}
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              />
+            </div>
             <div>
               <label
                 htmlFor="email"
