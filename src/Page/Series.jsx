@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { HiOutlineInformationCircle } from "react-icons/hi";
+import { Link } from "react-router-dom";
 
 const Series = () => {
   const [movies, setMovies] = useState([]);
@@ -30,13 +31,13 @@ const Series = () => {
           <h2 className="text-lg font-semibold mb-2">{movie.title}</h2>
           <p className="text-gray-600 mb-2">Summary: {movie.summary}</p>
           <p className="text-gray-600 mb-2">Duration: {movie.details.Duration}</p>
-          <a
-            href={`/series/${movie._id}`}
+          <Link
+            to={`/series/${movie._id}`}
             className="flex items-center text-blue-500 hover:text-blue-700"
           >
             <HiOutlineInformationCircle className="mr-1" />
             See Details
-          </a>
+          </Link>
         </div>
       ))}
     </div>
