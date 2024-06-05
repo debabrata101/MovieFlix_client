@@ -73,15 +73,15 @@ const SeriesDetails = () => {
       <div className="flex justify-end space-x-2">
         <Link
           to={`/edit-series/${_id}`}
-          className="btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
         >
-          <FaEdit className="mr-1" /> Edit
+          <FaEdit className="mr-1" /> 
         </Link>
         <Link
           onClick={handleDelete}
           className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
         >
-          <FaTrash className="mr-1" /> Delete
+          <FaTrash className="mr-1" />
         </Link>
       </div>
     </div>

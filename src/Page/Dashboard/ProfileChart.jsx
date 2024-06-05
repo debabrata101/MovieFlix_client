@@ -1,47 +1,41 @@
-import { Bar } from "react-chartjs-2";
+import { Doughnut } from "react-chartjs-2";
+import { Chart as ChartJS, ArcElement, Legend, Tooltip } from "chart.js";
+
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 const ProfileChart = () => {
   const data = {
     labels: ["Series", "Movies", "Watch Time"],
     datasets: [
       {
-        label: "Count",
-        data: [20, 30, 50],
+        data: [300, 50, 100], // Sample data values
         backgroundColor: [
-          'rgba(255, 99, 132, 0.6)',
-          'rgba(54, 162, 235, 0.6)',
-          'rgba(255, 206, 86, 0.6)',
+          "#FF6384",
+          "#36A2EB",
+          "#FFCE56"
         ],
-        borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
+        hoverBackgroundColor: [
+          "#FF6384",
+          "#36A2EB",
+          "#FFCE56"
         ],
-        borderWidth: 1
-      }
-    ]
-  };
-
-  const chartOptions = {
-    scales: {
-      x: {
-        stacked: true,
       },
-      y: {
-        stacked: true,
-      }
-    },
+    ],
+  };
+  
+
+  const options = {
     plugins: {
       legend: {
         display: true,
-        position: "bottom",
+        position: "right",
       },
     },
   };
 
   return (
     <div className="text-center">
-      <Bar data={data} options={chartOptions} />
+      <Doughnut data={data} options={options} />
     </div>
   );
 };

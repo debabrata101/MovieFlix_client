@@ -1,49 +1,43 @@
 import { Link, useNavigate } from "react-router-dom";
 import GoogleLogin from "../Component/Authentication/GoogleLogin";
-import { useAuthState, useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useAuthState,
+  useCreateUserWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
 import { useEffect, useState } from "react";
 import { auth } from "../Firebase/firebase.config";
-import axios from "axios";
 
 const Registration = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
-const [user, loading] = useAuthState(auth);
-const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(auth);
+  const [createUserWithEmailAndPassword] =
+    useCreateUserWithEmailAndPassword(auth);
 
-const [email, setEmail] = useState("");
-const [password, setPassword] = useState("");
-const [confirmPassword, setConfirmPassword] = useState("");
-const [name, setName] = useState(""); 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  if (password !== confirmPassword) {
-    alert("Passwords do not match!");
-    return;
-  }
-
-  try {
-    
     await createUserWithEmailAndPassword(email, password);
 
-
-    await axios.post('http://localhost:5000/user', {
-      email: email,
-      name: name, 
-    });
-
-    
-    navigate("/", { replace: true });
-  } catch (error) {
-    console.error("Error creating user:", error);
-  }
-};
-
-useEffect(() => {
-  if (user) {
-    navigate("/", { replace: true });
-  }
-}, [user, navigate, loading]);
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email: email, name: name }),
+    })
+      .then((res) => res.json())
+      .then((data) =>{ localStorage.setItem("token", data?.token)})
+  };
+  let from = location.state?.from?.pathname || "/";
+  useEffect(() => {
+    if (user) {
+      navigate(from, { replace: true });
+    }
+  }, [user, loading, navigate, from]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600 p-6">
@@ -58,7 +52,7 @@ useEffect(() => {
                 htmlFor="name"
                 className="block text-sm font-medium text-gray-700"
               >
-               Name
+                Name
               </label>
               <input
                 id="name"
@@ -135,7 +129,7 @@ useEffect(() => {
             <div className="mt-6">
               <GoogleLogin />
             </div>
-            
+
             <div className="mt-6 text-center">
               <p>
                 Already have an account?{" "}

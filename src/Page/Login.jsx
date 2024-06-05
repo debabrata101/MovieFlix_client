@@ -24,7 +24,7 @@ const Login = () => {
     if (user) {
       navigate(from, { replace: true });
     }
-  }, [user, navigate, loading, from]);
+  }, [user, loading , navigate ,from]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600 p-6">
