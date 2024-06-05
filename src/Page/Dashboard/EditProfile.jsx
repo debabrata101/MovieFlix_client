@@ -14,7 +14,7 @@ const EditProfile = () => {
 
     const userData = { name, age, mobileNumber, email: data?.email };
 
-    fetch(`http://localhost:5000/user/${data.email}`, {
+    fetch(`https://movie-flix-server.vercel.app/user/${data.email}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

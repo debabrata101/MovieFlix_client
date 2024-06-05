@@ -12,7 +12,7 @@ const GoogleLogin = () => {
           name: data?.user?.displayName,
           image: data?.user?.photoURL,
         };
-        fetch("http://localhost:5000/user", {
+        fetch("https://movie-flix-server.vercel.app/user", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

@@ -7,7 +7,7 @@ import ProfileChart from "./ProfileChart";
 const DashboardHome = () => {
   const [user] = useAuthState(auth);
   useEffect(() => {
-    fetch(`http://localhost:5000/user/${user?.email}`).then((res) =>
+    fetch(`https://movie-flix-server.vercel.app/user/${user?.email}`).then((res) =>
       res.json()
     );
   }, [user]);

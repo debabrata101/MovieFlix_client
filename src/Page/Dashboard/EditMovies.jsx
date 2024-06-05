@@ -32,7 +32,7 @@ const EditMovies = () => {
       screenshots,
       details,
     };
-    await fetch(`http://localhost:5000/movies/${movie._id}`, {
+    await fetch(`https://movie-flix-server.vercel.app/movies/${movie._id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
