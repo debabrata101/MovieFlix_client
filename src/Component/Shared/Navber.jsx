@@ -89,7 +89,7 @@ function Navber() {
                 <Link to="/profile" className="text-white flex-shrink-0">
                   <img
                     className="h-8 w-8 rounded-full"
-                    src={user?.photoURL || "/path-to-avatar.jpg"}
+                    src={user?.photoURL || "https://img.freepik.com/free-vector/user-circles-set_78370-4704.jpg"}
                     alt="Profile"
                   />
                 </Link>
