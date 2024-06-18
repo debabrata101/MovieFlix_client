@@ -8,7 +8,6 @@ const Contuct = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
     console.log({
       name,
       email,

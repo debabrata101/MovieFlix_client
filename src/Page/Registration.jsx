@@ -50,7 +50,7 @@ const Registration = () => {
     }
   };
 
-  let from = location.state?.from?.pathname || "/"; // Use location.state
+  let from = location.state?.from?.pathname || "/"; 
 
   useEffect(() => {
     if (user) {
@@ -59,9 +59,9 @@ const Registration = () => {
   }, [user, loading, navigate, from]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600 p-6">
+    <div className="min-h-screen flex items-center justify-center  p-6">
       <div className="flex flex-row bg-white shadow-lg rounded-lg max-w-4xl w-full overflow-hidden">
-        <div className="w-1/2 p-8">
+        <div className="w-1/2 bg-gradient-to-r from-blue-200 to-purple-400 p-8">
           <h2 className="text-2xl font-bold text-gray-900 text-center mb-6">
             Register for MovieFlix
           </h2>
@@ -152,7 +152,7 @@ const Registration = () => {
             <div className="mt-6 text-center">
               <p>
                 Already have an account?{" "}
-                <Link to="/login" className="text-indigo-500">
+                <Link to="/login" className="text-indigo-600 font-bold">
                   Login
                 </Link>
               </p>

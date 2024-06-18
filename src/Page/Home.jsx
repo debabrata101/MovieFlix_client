@@ -21,6 +21,9 @@ const Home = () => {
         Our Series
       </h1>
       <Series />
+      <h1 className="text-center font-bold text-3xl text-blue-500 capitalize p-4 m-4">
+        Contact Us
+      </h1>
       <Contuct />
     </div>
   );

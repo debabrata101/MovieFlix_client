@@ -4,13 +4,11 @@ import { useSignOut } from "react-firebase-hooks/auth";
 import { auth } from "../Firebase/firebase.config";
 
 const DashboardLayout = () => {
-  const navigate = useNavigate();
   const[signOut] = useSignOut(auth);
-
+ const navigate = useNavigate()
   const handleLogout = async () => {
     await signOut();
- 
-     navigate("/", { replace: true });
+  navigate("/")
   };
   return (
     <div className="flex h-screen">
@@ -40,7 +38,7 @@ const DashboardLayout = () => {
                 </Link>
               </li>
               <li>
-                <Link  onClick={handleLogout} className="block flex items-center hover:text-purple-500">
+                <Link   onClick={handleLogout} className="block flex items-center hover:text-purple-500">
                   <FaSignOutAlt className="mr-2" />
                   Logout
                 </Link>

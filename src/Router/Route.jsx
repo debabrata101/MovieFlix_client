@@ -58,6 +58,14 @@ export const router = createBrowserRouter([
         path: "series",
         element: <Series />,
       },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/registration",
+        element: <Registration />,
+      },
     ],
   },
   {
@@ -70,14 +78,7 @@ export const router = createBrowserRouter([
     element: <PrivateRoute><EditSeries/></PrivateRoute>,
     loader: ({ params }) => fetch(`http://localhost:5000/series/${params.id}`),
   },
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/registration",
-    element: <Registration />,
-  },
+
   {
     path: "dashboard",
     element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
