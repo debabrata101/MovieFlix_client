@@ -28,19 +28,19 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
-        loader: () => fetch("https://movie-flix-server.vercel.app/movies"),
+        loader: () => fetch("http://localhost:5000/movies"),
       },
       {
         path: "/movies/:id",
         element: <MovieDetails />,
         loader: ({ params }) =>
-          fetch(`https://movie-flix-server.vercel.app/movies/${params.id}`),
+          fetch(`http://localhost:5000/movies/${params.id}`),
       },
       {
         path: "/series/:id",
         element: <SeriesDetails />,
         loader: ({ params }) =>
-          fetch(`https://movie-flix-server.vercel.app/series/${params.id}`),
+          fetch(`http://localhost:5000/series/${params.id}`),
       },
       {
         path: "about",
@@ -63,12 +63,12 @@ export const router = createBrowserRouter([
   {
     path: "edit-movies/:id",
     element: <PrivateRoute><EditMovies /></PrivateRoute>,
-    loader: ({ params }) => fetch(`https://movie-flix-server.vercel.app/movies/${params.id}`),
+    loader: ({ params }) => fetch(`http://localhost:5000/movies/${params.id}`),
   },
   {
     path: "edit-series/:id",
     element: <PrivateRoute><EditSeries/></PrivateRoute>,
-    loader: ({ params }) => fetch(`https://movie-flix-server.vercel.app/series/${params.id}`),
+    loader: ({ params }) => fetch(`http://localhost:5000/series/${params.id}`),
   },
   {
     path: "/login",
@@ -89,9 +89,9 @@ export const router = createBrowserRouter([
       },
       {
         path: "profile/edit/:id",
-        element: <PrivateRoute><EditProfile /></PrivateRoute>,
+        element:( <PrivateRoute><EditProfile /></PrivateRoute>),
         loader: ({ params }) =>
-          fetch(`https://movie-flix-server.vercel.app/user/get/${params.id}`),
+          fetch(`http://localhost:5000/users/get/${params.id}`)
       },
       {
         path: "add-movies",

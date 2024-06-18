@@ -1,12 +1,16 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link,  Outlet, useNavigate } from "react-router-dom";
 import { FaUser, FaFilm, FaTv,  FaSignOutAlt, FaHome } from "react-icons/fa";
 import { useSignOut } from "react-firebase-hooks/auth";
 import { auth } from "../Firebase/firebase.config";
 
 const DashboardLayout = () => {
+  const navigate = useNavigate();
   const[signOut] = useSignOut(auth);
+
   const handleLogout = async () => {
     await signOut();
+ 
+     navigate("/", { replace: true });
   };
   return (
     <div className="flex h-screen">

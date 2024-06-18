@@ -20,7 +20,7 @@ const SeriesDetails = () => {
   } = movie;
   const handleDelete = async () => {
     await axios
-      .delete(`https://movie-flix-server.vercel.app/series/${_id}`, {
+      .delete(`http://localhost:5000/series/${_id}`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,

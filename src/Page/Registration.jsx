@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom"; // Import useLocation
 import GoogleLogin from "../Component/Authentication/GoogleLogin";
 import {
   useAuthState,
@@ -14,25 +14,44 @@ const Registration = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
+  const location = useLocation(); // Add this line to get location
+
   const [createUserWithEmailAndPassword] =
     useCreateUserWithEmailAndPassword(auth);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await createUserWithEmailAndPassword(email, password);
+    if (password !== confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
 
-    fetch("https://movie-flix-server.vercel.app/users", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email: email, name: name }),
-    })
-      .then((res) => res.json())
-      .then((data) =>{ localStorage.setItem("token", data?.token)})
+    try {
+      await createUserWithEmailAndPassword(email, password);
+
+      const response = await fetch("http://localhost:5000/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: email, name: name }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to register user");
+      }
+
+      const data = await response.json();
+      localStorage.setItem("token", data?.token);
+    } catch (error) {
+      console.error("Error registering user:", error);
+      alert("Failed to register user");
+    }
   };
-  let from = location.state?.from?.pathname || "/";
+
+  let from = location.state?.from?.pathname || "/"; // Use location.state
+
   useEffect(() => {
     if (user) {
       navigate(from, { replace: true });

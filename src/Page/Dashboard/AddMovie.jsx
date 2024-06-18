@@ -38,7 +38,7 @@ const AddMovie = () => {
       screenshots,
       details,
     };
-    await fetch("https://movie-flix-server.vercel.app/movies", {
+    await fetch("http://localhost:5000/movies", {
       method: "POST",
       headers: {
         "content-type": "application/json",

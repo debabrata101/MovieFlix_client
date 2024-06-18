@@ -3,7 +3,7 @@ import { useLoaderData } from "react-router-dom";
 
 const EditProfile = () => {
   const data = useLoaderData();
-
+  console.log(data)
   const handleSubmit = (e) => {
     e.preventDefault();
     const from = e.target;
@@ -14,14 +14,14 @@ const EditProfile = () => {
 
     const userData = { name, age, mobileNumber, email: data?.email };
 
-    fetch(`https://movie-flix-server.vercel.app/user/${data.email}`, {
+    fetch(`http://localhost:5000/users/${data?.email}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(userData),
     })
-      .then((res) => res.json())
+      .then((res) =>{ res.json()})
       .then(() => {
         toast.success("Profile Update !");
       });
@@ -37,7 +37,7 @@ const EditProfile = () => {
           <input
             type="text"
             name="name"
-            defaultValue={data?.name}
+            defaultValue={data.name}
             className="py-2 px-1 bg-slate-50 "
           />
         </div>

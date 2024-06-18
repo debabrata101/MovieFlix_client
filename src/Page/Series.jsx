@@ -9,7 +9,7 @@ const Series = () => {
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const response = await axios.get("https://movie-flix-server.vercel.app/series");
+        const response = await axios.get("http://localhost:5000/series");
         setMovies(response.data);
       } catch (error) {
         console.error(error);

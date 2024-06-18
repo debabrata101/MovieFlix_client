@@ -1,15 +1,18 @@
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../Firebase/firebase.config";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import ProfileChart from "./ProfileChart";
 
 const DashboardHome = () => {
   const [user] = useAuthState(auth);
+  console.log(user)
+  const [userInfo, setUserInfo] = useState();
+  console.log(userInfo)
   useEffect(() => {
-    fetch(`https://movie-flix-server.vercel.app/user/${user?.email}`).then((res) =>
-      res.json()
-    );
+    fetch(`http://localhost:5000/users/${user?.email}`)
+      .then((res) => res.json())
+      .then((data) => setUserInfo(data));
   }, [user]);
   return (
     <div className="flex   rounded-lg overflow-hidden shadow-lg bg-white h-1/2">
@@ -17,7 +20,7 @@ const DashboardHome = () => {
         <div className="flex justify-between mb-4">
           <h1 className="text-2xl font-semibold">Profile Information</h1>
           <Link
-            to={`/dashboard/profile/edit/${user?._id}`}
+            to={`profile/edit/${userInfo?._id}`}
             className="btn btn-neutral btn-md"
           >
             Edit Profile
@@ -35,13 +38,14 @@ const DashboardHome = () => {
           <div>
             <h2 className="text-xl font-semibold">{user?.displayName}</h2>
             <h2 className="text-xl font-semibold">{user?.name}</h2>
+            <h2 className="text-xl font-semibold">{user?.age}</h2>
+            <h2 className="text-xl font-semibold">{user?.mobileNumber}</h2>
             <p className="text-gray-600">{user?.email}</p>
           </div>
         </div>
-        
       </div>
       <div className=" text-center w-1/2 bg-gradient-to-b from-gray-100 to-gray-200 p-6">
-      <ProfileChart />
+        <ProfileChart />
       </div>
     </div>
   );
