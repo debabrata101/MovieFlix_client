@@ -12,7 +12,7 @@ const DashboardHome = () => {
   const [userInfo, setUserInfo] = useState();
   console.log(userInfo)
   useEffect(() => {
-    fetch(`http://localhost:5000/users/${user?.email}`)
+    fetch(`https://movie-flix-server-413x.vercel.app/users/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setUserInfo(data));
   }, [user]);

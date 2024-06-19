@@ -8,7 +8,7 @@ const DashboardLayout = () => {
  const navigate = useNavigate()
   const handleLogout = async () => {
     await signOut();
-  navigate("/")
+  navigate("/login")
   };
   return (
     <div className="flex h-screen">

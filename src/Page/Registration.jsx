@@ -30,7 +30,7 @@ const Registration = () => {
     try {
       await createUserWithEmailAndPassword(email, password);
 
-      const response = await fetch("http://localhost:5000/users", {
+      const response = await fetch("https://movie-flix-server-413x.vercel.app/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
